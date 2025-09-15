@@ -1,0 +1,75 @@
+﻿@model TestePositivo.Domain.Entities.Aluno
+@using TestePositivo.Domain.Enums
+
+<h2 class="mb-4">Editar Aluno</h2>
+
+<form asp-action="Edit" method="post" class="row g-3">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Matricula" />
+
+    <div class="col-md-6">
+        <label asp-for="NomeCompleto" class="form-label"></label>
+        <input asp-for="NomeCompleto" class="form-control" />
+        <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="DataNascimento" class="form-label"></label>
+        <input asp-for="DataNascimento" class="form-control" />
+        <span asp-validation-for="DataNascimento" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">Série</label>
+        <select asp-for="Serie" class="form-select"
+                asp-items="Html.GetEnumSelectList<SerieEnum>()"></select>
+        <span asp-validation-for="Serie" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="NomePai" class="form-label"></label>
+        <input asp-for="NomePai" class="form-control" />
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="NomeMae" class="form-label"></label>
+        <input asp-for="NomeMae" class="form-control" />
+    </div>
+
+    <h5 class="mt-4">Endereço</h5>
+
+    <div class="col-md-4">
+        <label class="form-label">Tipo</label>
+        <select asp-for="Endereco.Tipo" class="form-select"
+                asp-items="Html.GetEnumSelectList<TipoEnderecoEnum>()"></select>
+    </div>
+
+    <div class="col-md-8">
+        <label asp-for="Endereco.Rua" class="form-label"></label>
+        <input asp-for="Endereco.Rua" class="form-control" />
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Endereco.CEP" class="form-label"></label>
+        <input asp-for="Endereco.CEP" class="form-control" />
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Endereco.Numero" class="form-label"></label>
+        <input asp-for="Endereco.Numero" class="form-control" />
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Endereco.Complemento" class="form-label"></label>
+        <input asp-for="Endereco.Complemento" class="form-control" />
+    </div>
+
+    <div class="col-12 mt-3">
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

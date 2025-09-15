@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TestePositivo.Domain.Entities.Aluno>
+
+<h2>Alunos</h2>
+<p><a asp-action="Create" class="btn btn-primary">Novo Aluno</a></p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Matrícula</th>
+            <th>Nome</th>
+            <th>Série</th>
+            <th>Segmento</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.Matricula</td>
+                <td>@a.NomeCompleto</td>
+                <td>@a.Serie</td>
+                <td>@a.Segmento</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@a.Id">Detalhes</a> |
+                    <a asp-action="Edit" asp-route-id="@a.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@a.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
