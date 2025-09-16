@@ -1,4 +1,15 @@
-# SYLVIO ALBERNAZ MACHADO NETO
+## Instruções rápidas:
+- **Cópia da base de dados utilizada** (`sql/create_and_seed.sql`)
+- **aRQUIVO sql DE CONSULTA** (`sql/consultas.sql`)
+- 
+Esse script contém:
+- Criação das tabelas `Alunos` e `Enderecos`
+- Dados de exemplo para testes
+
+---
+
+
+# CURRÍCULO - SYLVIO ALBERNAZ MACHADO NETO
 
 📍 Av. Luiz Eduardo Toledo Prado, 4300 - Vila do Golf, Ribeirão Preto - SP - 14027-250  
 📧 sylvao@hotmail.com  
