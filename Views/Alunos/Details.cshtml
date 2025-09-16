@@ -1,5 +1,5 @@
-﻿@using TestePositivo.Extensions
-@model TestePositivo.Domain.Entities.Aluno
+﻿@model TestePositivo.Application.ViewModels.AlunoDetailsVm
+@using TestePositivo.Extensions
 
 <h2 class="mb-4">Detalhes do Aluno</h2>
 
@@ -29,9 +29,18 @@
 
             <dt class="col-sm-3">Endereço</dt>
             <dd class="col-sm-9">
-                @Model.Endereco.Tipo - @Model.Endereco.Rua, @Model.Endereco.Numero<br />
-                CEP: @Model.Endereco.CEP<br />
-                @Model.Endereco.Complemento
+                @if (Model.Endereco is not null)
+                {
+                    <text>
+                        @Model.Endereco.Tipo.GetDisplayName() — @Model.Endereco.Rua, @Model.Endereco.Numero<br />
+                        CEP: @Model.Endereco.CEP<br />
+                        @Model.Endereco.Complemento
+                    </text>
+                }
+                else
+                {
+                    <span class="text-muted">Não informado</span>
+                }
             </dd>
         </dl>
     </div>

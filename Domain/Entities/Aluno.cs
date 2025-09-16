@@ -6,30 +6,14 @@ namespace TestePositivo.Domain.Entities;
 public class Aluno
 {
     public long Id { get; private set; }
-
-    [Display(Name = "Matrícula")]
     public long Matricula { get; private set; }
-
-    [Required, StringLength(200)]
     public string NomeCompleto { get; set; } = "";
-
-    [Display(Name = "Data de Nascimento")]
-    [DataType(DataType.Date)]
     public DateTime DataNascimento { get; set; }
-
     public SerieEnum Serie { get; set; }
     public SegmentoEnum Segmento { get; private set; }
-
-    [Display(Name = "Nome do Pai")]
-    [StringLength(200)]
     public string? NomePai { get; set; }
-
-    [Display(Name = "Nome da Mãe")]
-    [StringLength(200)]
     public string? NomeMae { get; set; }
-
-    public Endereco Endereco { get; set; } = new();
-
+    public Endereco? Endereco { get; set; } = null;
 
 
     public void DefinirMatriculaSeNecessario()
