@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Tutorial";
+}
+
+<h2 class="mb-4">Tutorial — Como usar o sistema</h2>
+
+<div class="mb-4">
+    <p>Bem-vindo! Aqui vai um passo-a-passo rápido para avaliar o CRUD de Alunos.</p>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header fw-semibold">1) Executar o projeto</div>
+    <div class="card-body">
+        <ol class="mb-0">
+            <li>Configure a <code>connection string</code> em <code>appsettings.json</code> (chave <strong>Default</strong>).</li>
+            <li>Rode as migrations: <code>dotnet ef database update</code>.</li>
+            <li>Inicie: <code>dotnet run</code> e acesse <code>/Alunos</code>.</li>
+            <li>Health check: acesse <code>/status</code> para checar a aplicação.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header fw-semibold">2) Cadastrar aluno</div>
+    <div class="card-body">
+        <ul class="mb-0">
+            <li>Clique em <strong>Novo Aluno</strong> e preencha os campos.</li>
+            <li>A matrícula é gerada automaticamente no primeiro <em>save</em>.</li>
+            <li>A série define automaticamente o <strong>Segmento</strong> (Infantil, Anos Iniciais, Anos Finais, Ensino Médio).</li>
+            <li>Validações garantem que <strong>idade x série/segmento</strong> estão coerentes.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header fw-semibold">3) Editar, Detalhar e Excluir</div>
+    <div class="card-body">
+        <ul class="mb-0">
+            <li>Na lista de alunos, use os links <strong>Detalhes</strong>, <strong>Editar</strong> e <strong>Excluir</strong>.</li>
+            <li>Ao excluir, há confirmação com resumo do aluno.</li>
+            <li>Mensagens de sucesso/erro aparecem via <code>TempData</code>.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header fw-semibold">4) Endereço</div>
+    <div class="card-body">
+        <ul class="mb-0">
+            <li>Endereço é 1:1 com Aluno; os campos são validados (Tipo, Rua, CEP, Número).</li>
+            <li>Na tela de detalhes, o endereço é exibido de forma amigável.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header fw-semibold">5) Consultas SQL do teste</div>
+    <div class="card-body">
+        <p>As consultas estão em <code>sql/consultas.sql</code> e também disponíveis no rodapé via <strong>Consultas SQL</strong>:</p>
+        <ul>
+            <li>Total de alunos cadastrados</li>
+            <li>Total por série</li>
+            <li>Total por segmento</li>
+            <li>Quantidade e segmento de alunos entre 4 e 8 anos</li>
+            <li>Quantos e quais são irmãos (baseado em Pai ou Mãe)</li>
+        </ul>
+        <p class="mb-0">Há também um <em>seed</em> em <code>sql/seed.sql</code> com registros de alunos e endereços para facilitar os testes.</p>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header fw-semibold">6) Boas práticas aplicadas</div>
+    <div class="card-body">
+        <ul class="mb-0">
+            <li>ASP.NET Core MVC com separação em camadas (<em>Domain</em>, <em>Data</em>, <em>Application</em>);</li>
+            <li>ViewModels com DataAnnotations (mensagens em PT-BR) + validação client-side;</li>
+            <li>EF Core (SqlServer), Migrations e mapeamentos explícitos;</li>
+            <li>Enum display amigável via <code>GetDisplayName()</code>;</li>
+            <li>Endpoint de status <code>/status</code> para health/observabilidade;</li>
+            <li>Páginas auxiliares: <strong>Sobre</strong>, <strong>Privacidade</strong>, <strong>Consultas SQL</strong>.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header fw-semibold">7) Dicas rápidas</div>
+    <div class="card-body">
+        <ul class="mb-0">
+            <li>Se a validação do formulário “não envia”, verifique mensagens em vermelho (campos obrigatórios).</li>
+            <li>Datas no formato brasileiro com cultura <code>pt-BR</code>.</li>
+            <li>Problemas com banco? Rode novamente as migrations ou limpe a base LocalDB.</li>
+        </ul>
+    </div>
+</div>

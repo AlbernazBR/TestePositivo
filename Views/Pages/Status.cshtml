@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Status";
+    var code = ViewData["StatusCode"]?.ToString();
+}
+
+<h2 class="mb-4">Ops! Algo aconteceu</h2>
+
+<div class="card border-warning">
+    <div class="card-body">
+        @switch (code)
+        {
+            case "404":
+                <div class="alert alert-warning">
+                    <h4>Página não encontrada (404)</h4>
+                    <p>A página que você tentou acessar não existe ou foi removida.</p>
+                </div>
+                break;
+
+            case "403":
+                <div class="alert alert-danger">
+                    <h4>Acesso negado (403)</h4>
+                    <p>Você não tem permissão para acessar este recurso.</p>
+                </div>
+                break;
+
+            case "500":
+                <div class="alert alert-danger">
+                    <h4>Erro interno do servidor (500)</h4>
+                    <p>Algo inesperado aconteceu. Nossa equipe já está verificando.</p>
+                </div>
+                break;
+
+            default:
+                <div class="alert alert-info">
+                    <h4>Status: @code</h4>
+                    <p>Um evento inesperado ocorreu. Verifique os dados ou tente novamente.</p>
+                </div>
+                break;
+        }
+
+        <a asp-controller="Alunos" asp-action="Index" class="btn btn-primary mt-3">Voltar para a página inicial</a>
+    </div>
+</div>

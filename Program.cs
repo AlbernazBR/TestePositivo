@@ -39,4 +39,11 @@ app.MapGet("/status", () => Results.Ok(new
     serverTime = DateTime.UtcNow
 }));
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Pages/Error");
+    app.UseHsts();
+}
+app.UseStatusCodePagesWithReExecute("/Pages/Status", "?code={0}");
+
 app.Run();
