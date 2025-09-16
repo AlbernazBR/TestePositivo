@@ -98,7 +98,6 @@ public class AlunosController(AppDbContext db) : Controller
         return RedirectToAction(nameof(Index));
     }
 
-
     public async Task<IActionResult> Details(long id)
     {
         var aluno = await db.Alunos.Include(a => a.Endereco).FirstOrDefaultAsync(a => a.Id == id);
@@ -122,6 +121,8 @@ public class AlunosController(AppDbContext db) : Controller
 
         db.Remove(aluno);
         await db.SaveChangesAsync();
+
+        TempData["Success"] = "Aluno excluído com sucesso.";
         return RedirectToAction(nameof(Index));
     }
 }
