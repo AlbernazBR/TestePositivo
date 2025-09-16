@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace TestePositivo.Domain.Extensions;
+namespace TestePositivo.Extensions;
 
 public static class EnumExtensions
 {
