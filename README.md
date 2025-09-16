@@ -1,13 +1,12 @@
-## Instruções rápidas:
+## Instruções:
 - **Cópia da base de dados utilizada** (`sql/create_and_seed.sql`)
-- **aRQUIVO sql DE CONSULTA** (`sql/consultas.sql`)
-- 
+- **Arquivo SQL de consultas** (`sql/consultas.sql`)
+
 Esse script contém:
 - Criação das tabelas `Alunos` e `Enderecos`
 - Dados de exemplo para testes
 
 ---
-
 
 # CURRÍCULO - SYLVIO ALBERNAZ MACHADO NETO
 
