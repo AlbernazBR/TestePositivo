@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Sobre o Projeto";
+    var version = ViewBag.Version as string ?? "dev";
+}
+<h2>@ViewData["Title"]</h2>
+<ul>
+    <li><strong>Stack:</strong> ASP.NET Core MVC + EF Core (SQL Server)</li>
+    <li><strong>Padrões:</strong> Camadas Domain/Data/Application, ViewModels, validação server/client, TempData para feedback</li>
+    <li><strong>Migrações/Seed:</strong> via EF + script SQL complementar</li>
+    <li><strong>Desenvolvedor:</strong>SYLVIO MACHADO</li>
+    <li><strong>Versão:</strong> @version</li>
+</ul>
+<p>
+    • <a asp-controller="Pages" asp-action="ConsultasSql">Baixar consultas SQL</a><br />
+    • <a asp-controller="Alunos" asp-action="Index">Ir para o CRUD de Alunos</a>
+</p>

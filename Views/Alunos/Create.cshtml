@@ -4,45 +4,51 @@
 <h2 class="mb-4">Novo Aluno</h2>
 
 <form asp-action="Create" method="post" class="row g-3">
-    <div class="col-md-6">
+   
+    <div class="col-12">
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </div>
+
+    <div class="col-md-8">
         <label asp-for="NomeCompleto" class="form-label"></label>
         <input asp-for="NomeCompleto" class="form-control" />
         <span asp-validation-for="NomeCompleto" class="text-danger"></span>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
         <label asp-for="DataNascimento" class="form-label"></label>
-        <input asp-for="DataNascimento" class="form-control" />
+        <input asp-for="DataNascimento" type="date" class="form-control" />
         <span asp-validation-for="DataNascimento" class="text-danger"></span>
     </div>
 
-    <div class="col-md-3">
-        <label class="form-label">Série</label>
+    <div class="col-md-4">
+        <label asp-for="Serie" class="form-label"></label>
         <select asp-for="Serie" class="form-select"
-                asp-items="Html.GetEnumSelectList<SerieEnum>()">
-            <option value="">Selecione...</option>
-        </select>
+                asp-items="Html.GetEnumSelectList<SerieEnum>()"></select>
         <span asp-validation-for="Serie" class="text-danger"></span>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label asp-for="NomePai" class="form-label"></label>
         <input asp-for="NomePai" class="form-control" />
+        <span asp-validation-for="NomePai" class="text-danger"></span>
     </div>
-
-    <div class="col-md-6">
-        <label asp-for="NomeMae" class="form-label"></label>
-        <input asp-for="NomeMae" class="form-control" />
-    </div>
-
-    <h5 class="mt-4">Endereço</h5>
 
     <div class="col-md-4">
-        <label class="form-label">Tipo</label>
+        <label asp-for="NomeMae" class="form-label"></label>
+        <input asp-for="NomeMae" class="form-control" />
+        <span asp-validation-for="NomeMae" class="text-danger"></span>
+    </div>
+
+    <h5 class="mt-3">Endereço</h5>
+
+    <div class="col-md-4">
+        <label asp-for="Endereco.Tipo" class="form-label"></label>
         <select asp-for="Endereco.Tipo" class="form-select"
                 asp-items="Html.GetEnumSelectList<TipoEnderecoEnum>()">
             <option value="">Selecione...</option>
         </select>
+        <span asp-validation-for="Endereco.Tipo" class="text-danger"></span>
     </div>
 
     <div class="col-md-8">
@@ -68,12 +74,12 @@
         <input asp-for="Endereco.Complemento" class="form-control" />
     </div>
 
-    <div class="col-12 mt-3">
+    <div class="col-12 mt-2">
         <button type="submit" class="btn btn-primary">Salvar</button>
         <a asp-action="Index" class="btn btn-secondary">Voltar</a>
     </div>
 </form>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" /> 
 }

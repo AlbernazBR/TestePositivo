@@ -8,16 +8,17 @@ public class AlunoEditVm
     public long Id { get; set; }
 
     [Display(Name = "Nome completo")]
-    [Required, StringLength(200)]
+    [StringLength(200)]
+    [Required(ErrorMessage = "O campo Nome completo é obrigatório.")]
     public string NomeCompleto { get; set; } = "";
 
     [Display(Name = "Data de Nascimento")]
+    [Required(ErrorMessage = "O campo Data de Nascimento é obrigatório.")]
     [DataType(DataType.Date)]
-    [Required]
-    public DateTime DataNascimento { get; set; }
+    public DateTime? DataNascimento { get; set; }
 
-    [Required]
-    public SerieEnum Serie { get; set; }
+    [Required(ErrorMessage = "O campo Série é obrigatório.")]
+    public SerieEnum? Serie { get; set; }
 
     [Display(Name = "Nome do Pai")]
     [StringLength(200)]

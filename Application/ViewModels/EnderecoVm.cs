@@ -9,16 +9,21 @@ public class EnderecoVm
     public long AlunoId { get; set; }
 
     [Display(Name = "Tipo de Endereço")]
-    [Required]
-    public TipoEnderecoEnum Tipo { get; set; }
+    [Range(1, int.MaxValue, ErrorMessage = "Selecione o tipo")]
+    [Required(ErrorMessage = "O campo Tipo é obrigatório.")]
+    public TipoEnderecoEnum? Tipo { get; set; }
 
-    [Required, StringLength(200)]
+    [StringLength(200)]
+    [Required(ErrorMessage = "O campo Rua é obrigatório.")]
     public string Rua { get; set; } = "";
 
-    [Required, StringLength(20)]
+    [Display(Name = "CEP")]
+    [Required(ErrorMessage = "O campo CEP é obrigatório.")]
+    [RegularExpression(@"^\d{5}-\d{3}$", ErrorMessage = "O CEP deve estar no formato 00000-000.")]
     public string CEP { get; set; } = "";
 
-    [Required, StringLength(20)]
+    [StringLength(20)]
+    [Required(ErrorMessage = "O campo Número é obrigatório.")]
     public string Numero { get; set; } = "";
 
     [StringLength(100)]

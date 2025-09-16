@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using TestePositivo.Application.Mapping;
 using TestePositivo.Application.Services;
 using TestePositivo.Data;
@@ -11,21 +13,30 @@ builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(builder.Configur
 builder.Services.AddAutoMapper(typeof(AlunosProfile).Assembly);
 builder.Services.AddScoped<IAlunosService, AlunosService>();
 
+var defaultCulture = new CultureInfo("pt-BR");
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(defaultCulture),
+    SupportedCultures = [defaultCulture],
+    SupportedUICultures = [defaultCulture]
+};
+
 var app = builder.Build();
 
-//if (!app.Environment.IsDevelopment())
-//{
-//    app.UseExceptionHandler("/Home/Error");
-//    app.UseHsts();
-//}
-
+app.UseRequestLocalization(localizationOptions);
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Alunos}/{action=Index}/{id?}");
+
+app.MapGet("/status", () => Results.Ok(new
+{
+    status = "ok",
+    env = app.Environment.EnvironmentName,
+    serverTime = DateTime.UtcNow
+}));
 
 app.Run();

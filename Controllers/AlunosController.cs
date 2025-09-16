@@ -34,11 +34,13 @@ public class AlunosController(IAlunosService service) : Controller
         try
         {
             await service.CriarAsync(vm, DateTime.Today);
+            TempData["Success"] = "Aluno cadastrado com sucesso.";
             return RedirectToAction(nameof(Index));
         }
         catch (ValidationException ex)
         {
             ModelState.AddModelError(string.Empty, ex.Message);
+            TempData["Error"] = ex.Message;
             return View(vm);
         }
     }
@@ -65,6 +67,7 @@ public class AlunosController(IAlunosService service) : Controller
         catch (ValidationException ex)
         {
             ModelState.AddModelError(string.Empty, ex.Message);
+            TempData["Error"] = ex.Message;
             return View(vm);
         }
     }
@@ -80,8 +83,16 @@ public class AlunosController(IAlunosService service) : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(long id)
     {
-        await service.RemoverAsync(id);
-        TempData["Success"] = "Aluno excluído com sucesso.";
-        return RedirectToAction(nameof(Index));
+        try
+        {
+            await service.RemoverAsync(id);
+            TempData["Success"] = "Aluno excluído com sucesso.";
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception)
+        {
+            TempData["Error"] = "Não foi possível excluir o aluno.";
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

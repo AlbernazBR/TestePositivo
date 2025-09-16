@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TestePositivo.Domain.Enums;
+using TestePositivo.Extensions;
 
 namespace TestePositivo.Domain.Entities;
 
@@ -54,6 +55,6 @@ public class Aluno
         };
 
         if (!ok)
-            throw new ValidationException($"Idade {idade} fora da faixa permitida para a série {Serie}.");
+            throw new ValidationException($"Idade:{idade} anos. Fora da faixa permitida para o {Serie.GetDisplayName()}.");
     }
 }

@@ -21,15 +21,21 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <partial name="_Alerts" />
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - TestePositivo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container py-2 d-flex gap-3 flex-wrap">
+            <span>&copy; @DateTime.Now.Year - Teste Positivo</span>
+            <a asp-controller="Pages" asp-action="About">Sobre</a>
+            <a asp-controller="Pages" asp-action="Privacy">Privacidade</a>
+            <a asp-controller="Pages" asp-action="ConsultasSql">Baixar Consultas SQL</a>
+            <a href="/status">Status</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
