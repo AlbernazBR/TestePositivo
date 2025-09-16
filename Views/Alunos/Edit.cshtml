@@ -4,8 +4,12 @@
 <h2 class="mb-4">Editar Aluno</h2>
 
 <form asp-action="Edit" method="post" class="row g-3">
+    
     <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="Matricula" />
+       
+    <input type="hidden" asp-for="Endereco.Id" />
+    <input type="hidden" asp-for="Endereco.AlunoId" />
 
     <div class="col-md-6">
         <label asp-for="NomeCompleto" class="form-label"></label>
@@ -15,7 +19,7 @@
 
     <div class="col-md-3">
         <label asp-for="DataNascimento" class="form-label"></label>
-        <input asp-for="DataNascimento" class="form-control" />
+        <input asp-for="DataNascimento" type="date" class="form-control" />
         <span asp-validation-for="DataNascimento" class="text-danger"></span>
     </div>
 
@@ -47,16 +51,19 @@
     <div class="col-md-8">
         <label asp-for="Endereco.Rua" class="form-label"></label>
         <input asp-for="Endereco.Rua" class="form-control" />
+        <span asp-validation-for="Endereco.Rua" class="text-danger"></span>
     </div>
 
     <div class="col-md-4">
         <label asp-for="Endereco.CEP" class="form-label"></label>
         <input asp-for="Endereco.CEP" class="form-control" />
+        <span asp-validation-for="Endereco.CEP" class="text-danger"></span>
     </div>
 
     <div class="col-md-4">
         <label asp-for="Endereco.Numero" class="form-label"></label>
         <input asp-for="Endereco.Numero" class="form-control" />
+        <span asp-validation-for="Endereco.Numero" class="text-danger"></span>
     </div>
 
     <div class="col-md-4">

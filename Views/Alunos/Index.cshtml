@@ -19,8 +19,8 @@
             <tr>
                 <td>@a.Matricula</td>
                 <td>@a.NomeCompleto</td>
-                <td>@a.Serie</td>
-                <td>@a.Segmento</td>
+                <td>@a.Serie.GetDisplayName()</td>
+                <td>@a.Segmento.GetDisplayName()</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@a.Id">Detalhes</a> |
                     <a asp-action="Edit" asp-route-id="@a.Id">Editar</a> |

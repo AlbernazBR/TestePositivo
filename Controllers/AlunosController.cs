@@ -31,7 +31,10 @@ public class AlunosController(AppDbContext db) : Controller
 
         model.DerivarSegmento();
 
-        try { model.ValidarIdadePorSerie(DateTime.Today); }
+        try
+        {
+            model.ValidarIdadePorSerie(DateTime.Today);
+        }
         catch (ValidationException ex)
         {
             ModelState.AddModelError(string.Empty, ex.Message);
@@ -58,16 +61,20 @@ public class AlunosController(AppDbContext db) : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(long id, Aluno model)
     {
-        if (id != model.Id) return BadRequest();
+
         if (!ModelState.IsValid) return View(model);
 
-        var aluno = await db.Alunos.Include(a => a.Endereco).FirstOrDefaultAsync(a => a.Id == id);
+        var aluno = await db.Alunos
+            .Include(a => a.Endereco)
+            .FirstOrDefaultAsync(a => a.Id == id);
+
         if (aluno is null) return NotFound();
 
         aluno.NomeCompleto = model.NomeCompleto;
         aluno.DataNascimento = model.DataNascimento;
         aluno.Serie = model.Serie;
         aluno.DerivarSegmento();
+
         aluno.NomePai = model.NomePai;
         aluno.NomeMae = model.NomeMae;
 
@@ -77,7 +84,10 @@ public class AlunosController(AppDbContext db) : Controller
         aluno.Endereco.Numero = model.Endereco.Numero;
         aluno.Endereco.Complemento = model.Endereco.Complemento;
 
-        try { aluno.ValidarIdadePorSerie(DateTime.Today); }
+        try
+        {
+            aluno.ValidarIdadePorSerie(DateTime.Today);
+        }
         catch (ValidationException ex)
         {
             ModelState.AddModelError(string.Empty, ex.Message);
@@ -87,6 +97,7 @@ public class AlunosController(AppDbContext db) : Controller
         await db.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
+
 
     public async Task<IActionResult> Details(long id)
     {
